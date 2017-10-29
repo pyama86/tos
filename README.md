@@ -33,7 +33,7 @@ Usage of tos:
 [plugin.checks.log]
 command = "check-log -f /path/to/file -p PATTERN"
 # action = { command = "bash -c '[ \"$MACKEREL_STATUS\" != \"OK\" ]' && ruby /path/to/something.rb", user = "someone" }
-action = { command = "tos -no 'ruby /path/to/something.rb'", user = "someone" }
+action = { command = "/bin/tos -no 'ruby /path/to/something.rb'", user = "someone" }
 ```
 
 ## Install
