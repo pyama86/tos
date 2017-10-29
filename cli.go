@@ -4,12 +4,22 @@ import (
 	"flag"
 	"fmt"
 	"io"
+	"log/syslog"
 	"os"
 	"os/exec"
 	"strings"
 
 	"github.com/sirupsen/logrus"
 )
+
+func init() {
+	log := logrus.New()
+	hook, err := lSyslog.NewSyslogHook("udp", "localhost:514", syslog.LOG_INFO, "")
+
+	if err == nil {
+		log.Hooks.Add(hook)
+	}
+}
 
 // Exit codes are int values that represent an exit code for a particular error.
 const (
@@ -77,7 +87,6 @@ func (cli *CLI) Run(args []string) int {
 	}
 
 	cmd := ""
-	logrus.Info("hogefuga")
 	if no != "" && os.Getenv("MACKEREL_STATUS") != "" && os.Getenv("MACKEREL_STATUS") != "OK" {
 		cmd = no
 	} else {
