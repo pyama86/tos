@@ -78,6 +78,7 @@ func (cli *CLI) Run(args []string) int {
 
 	// Parse commandline flag
 	if err := flags.Parse(args[1:]); err != nil {
+		logrus.Error(err)
 		return ExitCodeError
 	}
 
