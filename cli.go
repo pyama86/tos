@@ -17,6 +17,14 @@ const (
 	ExitCodeError int = 1 + iota
 )
 
+var (
+	version   string
+	revision  string
+	goversion string
+	builddate string
+	builduser string
+)
+
 // CLI is the command line object
 type CLI struct {
 	// outStream and errStream are the stdout and stderr
@@ -64,12 +72,12 @@ func (cli *CLI) Run(args []string) int {
 
 	// Show version
 	if version {
-		fmt.Fprintf(cli.errStream, "%s version %s\n", Name, Version)
+		printVersion()
 		return ExitCodeOK
 	}
 
 	cmd := ""
-
+	logrus.Info("hogefuga")
 	if no != "" && os.Getenv("MACKEREL_STATUS") != "" && os.Getenv("MACKEREL_STATUS") != "OK" {
 		cmd = no
 	} else {
@@ -102,7 +110,13 @@ func (cli *CLI) Run(args []string) int {
 	err := c.Run()
 	if err != nil {
 		logrus.Error(err)
+		return ExitCodeError
 	}
 
 	return ExitCodeOK
+}
+
+func printVersion() {
+	fmt.Printf("veeta version: %s (%s)\n", version, revision)
+	fmt.Printf("build at %s (with %s) by %s\n", builddate, goversion, builduser)
 }
