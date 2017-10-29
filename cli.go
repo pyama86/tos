@@ -117,6 +117,6 @@ func (cli *CLI) Run(args []string) int {
 }
 
 func printVersion() {
-	fmt.Printf("veeta version: %s (%s)\n", version, revision)
+	fmt.Printf("tos version: %s (%s)\n", version, revision)
 	fmt.Printf("build at %s (with %s) by %s\n", builddate, goversion, builduser)
 }
