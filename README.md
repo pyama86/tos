@@ -9,6 +9,10 @@ Usage of tos:
         CRITICAL(Short)
   -critical string
         CRITICAL
+  -no string
+        NotOK(Short)
+  -not_ok string
+        Not OK
   -o string
         OK(Short)
   -ok string
