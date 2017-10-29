@@ -43,4 +43,4 @@ dist: build ## Upload to Github releases
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "$(INFO_COLOR)%-30s$(RESET) %s\n", $$1, $$2}'
-.PHONY: default dist test deps build
+.PHONY: default dist test deps build ghr
