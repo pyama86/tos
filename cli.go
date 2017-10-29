@@ -70,7 +70,7 @@ func (cli *CLI) Run(args []string) int {
 
 	cmd := ""
 
-	if no != "" && os.Getenv("MACKEREL_STATUS") != "OK" {
+	if no != "" && os.Getenv("MACKEREL_STATUS") != "" && os.Getenv("MACKEREL_STATUS") != "OK" {
 		cmd = no
 	} else {
 		switch os.Getenv("MACKEREL_STATUS") {
