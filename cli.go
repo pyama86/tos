@@ -10,14 +10,12 @@ import (
 	"strings"
 
 	"github.com/sirupsen/logrus"
-	lSyslog "github.com/sirupsen/logrus/hooks/syslog"
 )
 
 func init() {
-	log := logrus.New()
-	hook, err := lSyslog.NewSyslogHook("", "", syslog.LOG_INFO, "")
+	logger, err := syslog.New(syslog.LOG_NOTICE|syslog.LOG_USER, "tos")
 	if err == nil {
-		log.Hooks.Add(hook)
+		logrus.SetOutput(logger)
 	}
 }
 
